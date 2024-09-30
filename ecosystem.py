@@ -146,12 +146,9 @@ class Ecosystem(Cell2D):
         print(self.flora_types)
         # Update the array based on the positions of the agents
         for agent in self.agents:
-            if agent.type == self.flora_types[0]:
-                self.array[agent.loc] = 1  # Maps green
-
-            elif agent.type == self.flora_types[1]:
-                self.array[agent.loc] = 2 # Maps blue
-
+            for i, type in enumerate(self.flora_types,1):
+                if agent.type == type:
+                    self.array[agent.loc] = i
 
         # Draw the ecosystem grid
         plt.imshow(self.array, cmap=cmap, norm=norm, origin='lower')
